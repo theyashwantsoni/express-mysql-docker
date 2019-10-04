@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  # container_name: express-app
+  app:
+    build: ./app
+    ports:
+      - "3000:3000"
+    # links:
+    #   - db
+    depends_on:
+      - db
+    # environment:
+    #   - DATABASE_HOST=db
+    restart: always
+    # command: npm start
+
+
+  db:
+    # container_name: mysqldb
+    build: ./db
+
+  web:
+    # container_name: angular-client
+    build: ./test
+    ports:
+      - "80:80"
+
+
